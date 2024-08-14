@@ -1,0 +1,167 @@
+#include <iostream>
+using namespace std;
+
+// Function to simulate the AND operation in CNF
+void and2(int count, int f, int a, int b, int c = 0, int d = 0, int e = 0) {
+    cout << a << " " << -f << " 0" << endl;
+    cout << b << " " << -f << " 0" << endl;
+    if (count > 2) {
+        cout << c << " " << -f << " 0" << endl;
+    }
+    if (count > 3) {
+        cout << d << " " << -f << " 0" << endl;
+    }
+    if (count > 4) {
+        cout << e << " " << -f << " 0" << endl;
+    }
+
+    if (count == 2) {
+        cout << -a << " " << -b << " " << f << " 0" << endl;
+    } else if (count == 3) {
+        cout << -a << " " << -b << " " << -c << " " << f << " 0" << endl;
+    } else if (count == 4) {
+        cout << -a << " " << -b << " " << -c << " " << -d << " " << f << " 0" << endl;
+    } else if (count == 5) {
+        cout << -a << " " << -b << " " << -c << " " << -d << " " << -e << " " << f << " 0" << endl;
+    }
+}
+
+// Function to simulate the NOT operation in CNF
+void not1(int b, int a) {
+    cout << -a << " " << -b << " 0" << endl;
+    cout << a << " " << b << " 0" << endl;
+}
+void nor2(int count,int e,int a,int b,int c=0,int d=0){
+    cout << -a << " " << -e << " 0" << endl;
+    cout << -b << " " << -e << " 0" << endl;
+    if (count > 2) {
+        cout << -c << " " << -e << " 0" << endl;
+    }
+    if (count > 3) {
+        cout << -d << " " << -e << " 0" << endl;
+    }
+
+    if (count == 2) {
+        cout << a << " " << b << " " << e << " 0" << endl;
+    } else if (count == 3) {
+        cout << a << " " << b << " " << c << " " << e << " 0" << endl;
+    } else if (count == 4) {
+        cout << a << " " << b << " " << c << " " << d << " " << e << " 0" << endl;
+    } 
+    
+}
+void nand5(int count, int f, int a, int b, int c = 0, int d = 0, int e = 0) {
+    cout << a << " " << f << " 0" << endl;
+    cout << b << " " << f << " 0" << endl;
+    if (count > 2) {
+        cout << c << " " << f << " 0" << endl;
+    }
+    if (count > 3) {
+        cout << d << " " << f << " 0" << endl;
+    }
+    if (count > 4) {
+        cout << e << " " << f << " 0" << endl;
+    }
+    if (count == 2) {
+        cout << -a << " " << -b << " " << -f << " 0" << endl;
+    } else if (count == 3) {
+        cout << -a << " " << -b << " " << -c << " " << -f << " 0" << endl;
+    } else if (count == 4) {
+        cout << -a << " " << -b << " " << -c << " " << -d << " " << -f << " 0" << endl;
+    } else if (count == 5) {
+        cout << -a << " " << -b << " " << -c << " " << -d << " " << -e << " " << -f << " 0" << endl;
+    }
+}
+void exor(int c,int a,int b)
+{
+    cout << -a << " " << -b << " " << -c << " 0" << endl;
+    cout << -a << " " << b << " " << c << " 0" << endl;
+    cout << a << " " << -b << " " << c << " 0" << endl;
+    cout << a << " " << b << " " << -c << " 0" << endl;
+ 
+}
+int main() {
+    not1(19,2);
+    not1(18,4);
+    not1(17,6);
+    not1(16,8);
+    not1(15,10);
+    and2(2,20 ,3,3);
+    and2(2,21,4,11);
+    and2(2,22,12,18);
+    and2(3,24,18,3,13);
+    and2(3,25,3,4,14);
+    
+    and2(2,27,5,5);
+    and2(2,28,6,11);
+    and2(2,29,12,17);
+    and2(3,31,17,13,5);
+    and2(3,32,5,14,6);
+    
+    and2(2,34,7,7);
+    and2(2,35,8,11);
+    and2(2,36,12,16);
+    and2(3,38,16,13,7);
+    and2(3,39,7,14,8);
+    
+    and2(2,41,9,9);
+    and2(2,42,10,11);
+    and2(2,43,12,15);
+    and2(3,45,15,13,9);
+    and2(3,46,9,14,10);
+    
+    nor2(3,23,20,21,22);
+    nor2(2,26,24,25);
+    
+    nor2(3,30,27,28,29);
+    nor2(2,33,31,32);
+    
+    nor2(3,37,34,35,36);
+    nor2(2,40,38,39);
+    
+    nor2(3,44,41,42,43);
+    nor2(2,47,45,46);
+    
+    nand5(2,75,1,19);
+    not1(73,23);
+    and2(2,71,19,23);
+    and2(3,70,19,26,1);
+    not1(68,30);
+    
+    and2(2,66,19,30);
+    and2(3,65,19,23,33);
+    and2(4,64,19,1,26,33);
+    not1(62,37);
+    and2(2,60,19,37);
+    and2(3,59,19,30,40);
+    and2(4,58,19,23,33,40);
+    and2(5,57,19,1,26,33,40);
+    not1(55,44);
+    nand5(4,54,26,33,40,47);
+    nand5(5,53,1,26,33,40,47);
+    and2(4,51,23,33,30,40);
+    and2(3,50,30,40,47);
+    and2(2,49,37,47);
+    and2(2,48,44,44);
+    
+    and2(2,74,73,26);
+    nor2(2,72,71,70);
+    and2(2,69,68,33);
+    nor2(3,67,66,65,64);
+    and2(2,63,62,40);
+    nor2(4,61,60,59,58,57);
+    and2(2,56,55,47);
+    nor2(4,52,51,50,49,48);
+    exor(76,75,74);
+    exor(77,72,69);
+    and2(4,78,76,77,79,80);
+    exor(79,67,63);
+    exor(80,61,56);
+    nor2(2,82,53,52);
+    
+    
+    
+    
+    return 0;
+}
+
